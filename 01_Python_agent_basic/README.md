@@ -130,7 +130,3 @@ rate limiting, observability, and stronger tool permissions.
 
 > A single-file Python project for learning how an LLM agent calls tools,
 > without LangChain or another agent framework.
-
-## License
-
-MIT
