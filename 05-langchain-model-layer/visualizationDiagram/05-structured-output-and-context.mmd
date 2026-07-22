@@ -1,0 +1,8 @@
+flowchart TD
+    R["Model result"] --> P["Parse against Pydantic schema"]
+    P --> S{"Shape valid?"}
+    S -- No --> H["Handle / retry / repair"]
+    S -- Yes --> B["Business + factual + authorization checks"]
+    B --> A["Application action"]
+    M["Long history"] --> C["Summary + recent turns"]
+    C --> B

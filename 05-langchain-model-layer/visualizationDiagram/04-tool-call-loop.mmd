@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant U as User
+    participant M as Model
+    participant A as Application
+    participant T as Tool
+    U->>M: question
+    M-->>A: AIMessage.tool_calls
+    A->>A: allowlist + validate + authorize
+    A->>T: execute with timeout
+    T-->>A: result or error
+    A->>M: ToolMessage(tool_call_id)
+    M-->>U: final response

@@ -1,0 +1,13 @@
+[project]
+name = "langchain-model-layer-learning"
+version = "0.1.0"
+description = "Runnable learning examples for the LangChain model layer"
+requires-python = ">=3.10"
+dependencies = [
+  "langchain>=1.0",
+  "langchain-openai>=1.0",
+  "pydantic>=2.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

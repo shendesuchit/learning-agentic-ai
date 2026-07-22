@@ -1,0 +1,14 @@
+[project]
+name = "langchain-weather-agent"
+version = "0.1.0"
+description = "A minimal create_agent() example for learning LangChain fundamentals."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "langchain>=1.2.0",
+    "langchain-openai>=1.1.0",
+    "python-dotenv>=1.1.0",
+]
+
+[tool.uv]
+package = false

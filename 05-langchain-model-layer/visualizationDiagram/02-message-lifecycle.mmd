@@ -1,0 +1,7 @@
+sequenceDiagram
+    participant App as Application state
+    participant Model as Chat model
+    App->>Model: SystemMessage + history + HumanMessage
+    Model-->>App: AIMessage
+    Note over App: inspect text, usage, metadata, tool_calls
+    App->>App: select relevant state for next turn

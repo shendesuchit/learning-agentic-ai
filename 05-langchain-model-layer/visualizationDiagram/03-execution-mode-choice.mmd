@@ -1,0 +1,8 @@
+flowchart TD
+    Q["What work is this?"] --> I{"One response?"}
+    I -- Yes --> V{"Need progressive UI?"}
+    V -- No --> INV["invoke()"]
+    V -- Yes --> STR["stream()"]
+    I -- No --> D{"Inputs independent?"}
+    D -- Yes --> BAT["batch() / batch_as_completed()"]
+    D -- No --> SEQ["Run in dependency order"]

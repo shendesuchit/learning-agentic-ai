@@ -1,0 +1,8 @@
+flowchart TD
+    C["Application configuration"] --> L["LangChain model interface"]
+    L --> A["Provider integration A"]
+    L --> B["Provider integration B"]
+    A --> CA["Capabilities + limits A"]
+    B --> CB["Capabilities + limits B"]
+    CA --> T["Test the chosen model"]
+    CB --> T
