@@ -1,0 +1,17 @@
+[project]
+name = "python-agent-basic"
+version = "1.0.0"
+description = "A visual, beginner-friendly introduction to AI tool-calling agents in pure Python"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Learning Agentic AI" }]
+dependencies = []
+
+[project.scripts]
+python-agent = "main:main"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+

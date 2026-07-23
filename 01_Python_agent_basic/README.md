@@ -1,132 +1,109 @@
-# AI Tool-Calling Agent in One Python File
+# Build Your First Tool-Calling AI Agent in Pure Python
 
-This is a beginner-friendly project for understanding an AI agent before using
-frameworks such as LangChain. All Python logic is intentionally kept inside
-one file: [`main.py`](main.py).
+> Learn what happens inside an AI agent before a framework hides the details.
 
-The project is meant for study and demonstration—not as a production template.
+This project teaches one important idea: **an AI model becomes more useful when it can
+request a normal Python function, receive its result, and continue answering.**
 
-## What will you learn?
+You do not need LangChain, LangGraph, or an API key to begin. Demo mode runs entirely on
+your computer and makes every step visible.
 
-You will see that an agent is not magic. It is mainly a loop connecting four
-simple pieces:
-
-1. Conversation memory
-2. A language model
-3. A normal Python function
-4. A tool schema describing that function to the model
+## What you will build
 
 ```mermaid
-flowchart TD
-    U[User asks a question] --> L[Python calls the language model]
-    L --> D{Does the model request a tool?}
-    D -- No --> A[Return the answer]
-    D -- Yes --> T[Python executes the tool]
-    T --> M[Add the result to memory]
-    M --> L
+flowchart LR
+    U[User question] --> A[Python agent]
+    A --> M{Model decision}
+    M -->|Answer known| R[Final answer]
+    M -->|Tool needed| T[Python tool]
+    T --> A
+    A --> M
 ```
 
-The model does not run `get_weather()`. It only requests that the function be
-called. Python remains responsible for finding and executing the function.
+The included weather values are intentionally fixed sample data. The lesson is tool
+calling—not weather forecasting.
 
-## Files
+## Start in two minutes
 
-```text
-verbose-tool-agent/
-├── main.py           # all Python code
-├── pyproject.toml    # project details and dependencies
-├── uv.lock           # exact dependency versions
-├── .env.example      # API-key template
-├── .gitignore
-├── .python-version
-├── LICENSE
-└── README.md
-```
-
-## Prerequisites
-
-- Python 3.11 or newer
-- [`uv`](https://docs.astral.sh/uv/)
-- One API key from Groq, OpenRouter, or OpenAI
-
-## 1. Install the dependencies
+Requirements: Python 3.12 or newer. No package installation is required.
 
 ```bash
-uv sync
+python main.py "What is the weather in Pune?"
 ```
 
-`uv` automatically creates the virtual environment and installs the versions
-recorded in `uv.lock`.
-
-## 2. Configure the API key
-
-On macOS or Linux:
+Try a question that does not need a tool:
 
 ```bash
-cp .env.example .env
+python main.py "Explain what an AI agent is"
 ```
 
-On Windows PowerShell:
-
-```powershell
-Copy-Item .env.example .env
-```
-
-Open `.env` and fill in one API key. Never put the key directly in `main.py`
-and never commit `.env` to Git.
-
-## 3. Run the project
-
-Start an interactive conversation:
+Run the built-in checks:
 
 ```bash
-uv run python main.py
+python main.py --self-test
 ```
 
-Ask one question and exit:
+With `uv`, the equivalent commands are:
 
 ```bash
-uv run python main.py "What is the weather in Delhi?"
-```
-
-The default output deliberately prints the conversation and agent steps. This
-makes the otherwise hidden execution flow easier to understand.
-
-Print only the answer:
-
-```bash
-uv run python main.py --quiet "What is the weather in Tokyo?"
-```
-
-Test the local Python logic without an API key:
-
-```bash
+uv run python main.py "What is the weather in Tokyo?"
 uv run python main.py --self-test
 ```
 
-## How to study `main.py`
+## What to watch while it runs
 
-Read the numbered sections in order:
+Do not begin by memorising the code. Watch the `messages` list change:
 
-1. `get_weather()` — a normal Python function
-2. `TOOL_SCHEMAS` — the description shown to the model
-3. `get_client_and_model()` — provider selection
-4. Printing helpers — visibility into execution
-5. `run_agent()` — the actual agent loop
-6. Terminal interface — how a user interacts with the loop
+1. The user question enters the list.
+2. The model requests a tool.
+3. Python executes that tool.
+4. The tool result enters the list.
+5. The model reads the result and writes the final answer.
 
-Do not begin by memorising the code. Follow how the `messages` list changes.
-That list is the key to understanding why the model can use a tool result only
-on the next call.
+That second model call is the detail beginners most often miss.
 
-## Important limitation
+## Learning path
 
-The weather is fixed sample data, not live weather. This is intentional because
-the goal is to isolate and understand tool calling. Production systems also
-need timeouts, retries, structured logging, persistent memory, authentication,
-rate limiting, observability, and stronger tool permissions.
+| Step | Lesson | Main question |
+|---:|---|---|
+| 1 | [From program to agent](docs/01-from-python-program-to-ai-agent.md) | What makes an agent different? |
+| 2 | [Understanding tools](docs/02-understanding-tools.md) | How does a Python function become a tool? |
+| 3 | [Tool selection](docs/03-how-the-model-selects-a-tool.md) | Who decides whether a tool is needed? |
+| 4 | [The agentic loop](docs/04-understanding-the-agentic-loop.md) | Why must the model be called again? |
+| 5 | [Messages and memory](docs/05-conversation-history-and-memory.md) | What does the model actually remember? |
+| 6 | [Code walkthrough](docs/06-complete-code-walkthrough.md) | How do the code sections cooperate? |
+| 7 | [Guided practice](docs/07-guided-practice.md) | Can I modify the agent myself? |
 
-## Suggested GitHub description
+## Visual learning material
 
-> A single-file Python project for learning how an LLM agent calls tools,
-> without LangChain or another agent framework.
+- [Agent components](visualizationDiagram/agent-components.md)
+- [Tool-calling sequence](visualizationDiagram/tool-calling-sequence.md)
+- [Message-history growth](visualizationDiagram/message-history-growth.md)
+- [Complete agent loop](visualizationDiagram/complete-agent-loop.md)
+- [Handwritten-style notes](Handwrittennotes/README.md)
+- [Sticky-note revision cards](StickyNotes/remember-these-concepts.md)
+
+## Optional: connect a real model
+
+Demo mode is the recommended starting point. When the flow is clear, set these environment
+variables in your terminal:
+
+```bash
+export AGENT_MODE=api
+export MODEL_API_KEY="your-key"
+export MODEL_NAME="gpt-4.1-mini"
+export MODEL_BASE_URL="https://api.openai.com/v1"
+python main.py "What is the weather in Pune?"
+```
+
+On Windows PowerShell, replace `export NAME=value` with `$env:NAME="value"`.
+
+The API mode uses the OpenAI-compatible `/chat/completions` protocol and only Python's
+standard library. Never commit a real API key.
+
+## Repository boundaries
+
+This is a focused teaching project. It explains the mechanics of a basic tool-calling agent.
+It deliberately avoids framework abstractions, interview preparation, and unrelated system
+design material so that the central idea stays visible.
+
