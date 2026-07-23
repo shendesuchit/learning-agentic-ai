@@ -59,7 +59,7 @@ Vague tool names and descriptions force the model to guess. Compare:
 | Weak | Better |
 | --- | --- |
 | `search` | `search_customer_orders` |
-| "Get data" | "Return orders for one authorised customer ID" |
+| `Get data` | `Return orders for one authorised customer ID` |
 | `query: string` | `customer_id: string`, `status: enum`, `limit: integer` |
 
 The clearer schema reduces ambiguity, but it does not make model output trustworthy by itself. The next chapter explains why the application must still validate every requested call.
