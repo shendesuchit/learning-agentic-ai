@@ -1,0 +1,232 @@
+schema_version: "1.0"
+
+module:
+  id: "04-langchain-fundamentals"
+  title: "LangChain Fundamentals — From a Manual Agent Loop to a Harness"
+  slug: "langchain-fundamentals"
+  path: "04-langchain-fundamentals"
+  sequence: 4
+  status: "complete"
+  difficulty: "beginner"
+  estimated_learning_time: "2-3 hours"
+  summary: "Bridges the repository's hand-built Python agent loop to LangChain's configurable agent harness. The module explains why frameworks become useful, separates model capability from harness responsibilities, maps the LangChain product family, establishes reproducible and secure project setup, and makes the create_agent execution loop visible through a runnable mock-weather-tool example."
+
+repository:
+  url: "https://github.com/shendesuchit/learning-agentic-ai"
+  branch: "main"
+  module_path: "04-langchain-fundamentals"
+  metadata_path: "04-langchain-fundamentals/metadata.yaml"
+
+audience:
+  primary: "Fresh college graduate / Beginner"
+  assumed_knowledge:
+    - "Basic Python functions"
+    - "Python virtual environments and package installation"
+    - "Difference between an LLM, chatbot, and agent"
+    - "Manual model-to-tool-to-model agentic loop"
+  learning_style:
+    - first_principles
+    - progressive
+    - beginner_friendly
+    - visual
+
+prerequisites:
+  modules:
+    - "02-agent-fundamentals"
+    - "03-building-agents-in-pure-python"
+  concepts:
+    - "Tool schemas and structured arguments"
+    - "Application-controlled tool execution"
+    - "Conversation message state"
+    - "Stopping conditions for an agentic loop"
+
+learning_objectives:
+  - "Explain when LangChain reduces repeated integration and orchestration work."
+  - "Distinguish a language model from the harness surrounding an agent loop."
+  - "Compare the roles of LangChain, LangGraph, Deep Agents, and LangSmith."
+  - "Create a reproducible LangChain project without committing provider credentials."
+  - "Trace the model-to-tool-to-model lifecycle performed during agent invocation."
+  - "Identify which agent responsibilities remain explicit engineering decisions."
+
+topics:
+  primary:
+    - "Why LangChain after a pure-Python agent"
+    - "Agent as model plus harness"
+    - "LangChain product-family responsibilities"
+    - "Project setup with uv and environment variables"
+    - "create_agent configuration and invocation"
+    - "Agent component roadmap"
+  secondary:
+    - "Provider portability limits"
+    - "Tool schema inference from Python callables"
+    - "Message state"
+    - "Explicit persistence and thread identity"
+    - "Middleware responsibilities"
+    - "Secret rotation after accidental exposure"
+    - "Observability and evaluation"
+
+learning_sequence:
+  previous_module: "03-building-agents-in-pure-python"
+  next_module: "05-langchain-model-layer"
+  narrative_connection:
+    from_previous: "Replaces repeated manual orchestration with a configurable framework harness while preserving the same model-to-tool-to-model mental model."
+    to_next: "Moves from the high-level harness to detailed model configuration, message construction, execution modes, tool binding, and structured output."
+
+source_material:
+  primary_files:
+    - "04-langchain-fundamentals/README.md"
+    - "04-langchain-fundamentals/docs/01-why-langchain-after-pure-python.md"
+    - "04-langchain-fundamentals/docs/02-agent-harness-model-to-useful-system.md"
+    - "04-langchain-fundamentals/docs/03-langchain-family-choosing-the-right-layer.md"
+    - "04-langchain-fundamentals/docs/04-project-setup-uv-credentials-and-reproducibility.md"
+    - "04-langchain-fundamentals/docs/05-create-agent-smallest-langchain-agent.md"
+    - "04-langchain-fundamentals/docs/06-agent-components-and-what-comes-next.md"
+  supporting_files:
+    - "04-langchain-fundamentals/references/sources.md"
+    - "04-langchain-fundamentals/examples/01_weather_agent/README.md"
+    - "04-langchain-fundamentals/examples/01_weather_agent/.env.example"
+    - "04-langchain-fundamentals/examples/01_weather_agent/.gitignore"
+    - "04-langchain-fundamentals/examples/01_weather_agent/pyproject.toml"
+    - "04-langchain-fundamentals/Handwrittennotes/langchain-fundamentals-cheat-sheet.md"
+    - "04-langchain-fundamentals/StickyNotes/misconceptions-and-revision-cards.md"
+    - "04-langchain-fundamentals/visualizationDiagram/create-agent-execution-flow.md"
+    - "04-langchain-fundamentals/visualizationDiagram/langchain-family-control-spectrum.md"
+    - "04-langchain-fundamentals/visualizationDiagram/model-to-agent-harness.md"
+  code_files:
+    - "04-langchain-fundamentals/examples/01_weather_agent/main.py"
+  external_references:
+    - "https://docs.langchain.com/oss/python/langchain/overview"
+    - "https://docs.langchain.com/oss/python/langchain/agents"
+    - "https://docs.langchain.com/oss/python/langchain/middleware/overview"
+  source_validation: "partially_verified"
+
+content_assets:
+  readme:
+    status: "complete"
+    path: "04-langchain-fundamentals/README.md"
+
+  code_examples:
+    status: "complete"
+    paths:
+      - "04-langchain-fundamentals/examples/01_weather_agent/main.py"
+
+  notebooks:
+    status: "not_started"
+    paths: []
+
+  exercises:
+    status: "not_started"
+    paths: []
+
+  mermaid_diagrams:
+    status: "complete"
+    paths:
+      - "04-langchain-fundamentals/docs/02-agent-harness-model-to-useful-system.md"
+      - "04-langchain-fundamentals/docs/03-langchain-family-choosing-the-right-layer.md"
+      - "04-langchain-fundamentals/docs/04-project-setup-uv-credentials-and-reproducibility.md"
+      - "04-langchain-fundamentals/docs/05-create-agent-smallest-langchain-agent.md"
+      - "04-langchain-fundamentals/docs/06-agent-components-and-what-comes-next.md"
+      - "04-langchain-fundamentals/visualizationDiagram/create-agent-execution-flow.md"
+      - "04-langchain-fundamentals/visualizationDiagram/langchain-family-control-spectrum.md"
+      - "04-langchain-fundamentals/visualizationDiagram/model-to-agent-harness.md"
+
+  static_diagrams:
+    status: "not_started"
+    paths: []
+
+  animated_readme_visualization:
+    status: "not_started"
+    paths: []
+
+  interactive_html:
+    status: "not_started"
+    paths: []
+
+  handwritten_notes:
+    status: "complete"
+    paths:
+      - "04-langchain-fundamentals/Handwrittennotes/langchain-fundamentals-cheat-sheet.md"
+
+  sticky_notes:
+    status: "complete"
+    paths:
+      - "04-langchain-fundamentals/StickyNotes/misconceptions-and-revision-cards.md"
+
+visualization:
+  suitability: "high"
+  recommended_concepts:
+    - "Manual loop versus create_agent harness"
+    - "Model, prompt, tools, state, middleware, and policy boundaries"
+    - "Tool-call execution sequence"
+    - "Control-versus-convenience spectrum"
+    - "Progression from LangChain fundamentals to production workflows"
+  primary_visual_story: "Follow one user request as the harness supplies instructions and tool definitions, the model requests a tool, application code executes it, message state changes, and the model produces a final answer."
+  preferred_readme_format: "Embedded Mermaid flowchart and sequence diagram with concise explanatory text"
+  preferred_interactive_format: "Single-page HTML step-through simulator showing message-state changes and optional tool-call branches"
+  proposed_assets:
+    - id: "agent-harness-step-through"
+      type: "interactive_html"
+      status: "planned"
+      purpose: "Let learners advance through each model, harness, tool, and state transition."
+      source_files:
+        - "04-langchain-fundamentals/docs/02-agent-harness-model-to-useful-system.md"
+        - "04-langchain-fundamentals/docs/05-create-agent-smallest-langchain-agent.md"
+        - "04-langchain-fundamentals/examples/01_weather_agent/main.py"
+    - id: "manual-vs-framework-loop"
+      type: "animated_readme_visualization"
+      status: "planned"
+      purpose: "Show that create_agent packages the existing loop rather than removing it."
+      source_files:
+        - "04-langchain-fundamentals/docs/01-why-langchain-after-pure-python.md"
+        - "04-langchain-fundamentals/visualizationDiagram/create-agent-execution-flow.md"
+
+technical_review:
+  status: "needs_review"
+  verified_concepts:
+    - "create_agent accepts a model, tools, and system_prompt."
+    - "Agent invocation uses message state and can iterate through tool calls."
+    - "LangChain provides a configurable harness around the model loop."
+    - "Persistent conversational state requires explicit checkpointing and thread identity."
+    - "Middleware can affect prompts, model and tool calls, retries, termination, guardrails, and state."
+    - "LangSmith provides tracing, testing, and evaluation beyond LangChain-only applications."
+  corrections_required: []
+  ambiguities:
+    - "The class transcripts named in references/sources.md are not stored in the public module, so their source mapping could not be independently verified."
+    - "The runnable example requires provider credentials and account-specific model access, so end-to-end behavior is environment-dependent."
+    - "Dependency minimums are declared, but no lockfile is present to preserve an exact tested dependency set."
+
+quality:
+  conceptual_accuracy: "verified"
+  beginner_accessibility: "complete"
+  narrative_continuity: "complete"
+  visual_support: "complete"
+  code_readability: "complete"
+
+gaps:
+  missing_content:
+    - "No learner exercise or self-check task is included."
+    - "No automated test verifies syntax, tool behavior, or example wiring."
+    - "Referenced class transcripts are not available inside the public module for source-trail verification."
+  missing_assets:
+    - "No notebook"
+    - "No static PNG, SVG, JPG, GIF, or WebP learning asset"
+    - "No animated README visualization"
+    - "No interactive HTML visualization"
+  recommended_improvements:
+    - "Add a deterministic test for get_weather and a syntax/import smoke test that does not call a hosted model."
+    - "Add a beginner exercise that asks learners to introduce a second tool and inspect the resulting message sequence."
+    - "Commit a uv.lock file after testing the example to make dependency resolution reproducible."
+    - "Add source excerpts or repository-accessible source maps if transcript-level traceability is required."
+    - "Build the proposed step-through visualization by reusing the existing execution-flow diagram and weather-agent example."
+
+generation_policy:
+  repository_is_source_of_truth: true
+  reuse_existing_assets: true
+  overwrite_existing_assets: false
+  avoid_content_duplication: true
+  require_source_grounding: true
+
+last_review:
+  reviewed_on: "2026-07-24"
+  reviewed_from_commit: "1c4a1808443e0c2b284e577cff2563922807a364"
+  reviewer: "AI-assisted repository analysis"
