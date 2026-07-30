@@ -35,8 +35,8 @@ Keep that split in your head as we go: *messages are about structure, invocation
 
 Here's some useful history, because understanding *why* a tool exists usually makes it stick better than memorizing what it does.
 
-- Before message objects existed, a "prompt" really was just a plain string. Every AI provider had its own private convention for stuffing conversation history and instructions into that string. Switch from OpenAI to Anthropic, and you'd end up rewriting your entire prompt-formatting logic from scratch.
-- There was no standard way to say "this text is from the system," "this is from the user," or "this came from a tool." A model reading raw concatenated text had zero structural signal for what to trust versus what to simply answer.
+- Before message objects existed, a **prompt** really was just a plain string. Every AI provider had its own private convention for stuffing conversation history and instructions into that string. Switch from OpenAI to Anthropic, and you'd end up rewriting your entire prompt-formatting logic from scratch.
+- There was no standard way to say this **text is from the system, this is from the user**, **or this came from a tool**. A model reading raw concatenated text had zero structural signal for what to trust versus what to simply answer.
 
 That's precisely the gap LangChain's message types were built to close — they give a conversation *shape*.
 
